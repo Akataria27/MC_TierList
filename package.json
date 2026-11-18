@@ -1,6 +1,6 @@
 {
   "name": "mc-tierlist",
-  "version": "0.4.7",
+  "version": "0.4.10",
   "description": "Offline Minecraft item tier list with nested categories",
   "main": "main.js",
   "private": true,

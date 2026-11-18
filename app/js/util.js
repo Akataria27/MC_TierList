@@ -269,6 +269,9 @@ window.App = window.App || { store: null, actions: {} };
     const t = Date.now();
     if (st && st.font) await loadUiFont();
     // Versioned URLs so sprites rebuilt while the app is open replace the ones already shown.
+    const sc = !!(st && st.scroll);
+    if (sc) { document.documentElement.style.setProperty('--scroll', uiUrl('scroll.png', t)); document.documentElement.style.setProperty('--scroll-bg', uiUrl('scroll_bg.png', t)); }
+    document.body.classList.toggle('mc-scroll', sc);
     const fr = !!(st && st.frame);
     if (fr) { document.documentElement.style.setProperty('--frame', uiUrl('frame.png', t)); document.documentElement.style.setProperty('--frame-hi', uiUrl('frame_hi.png', t)); }
     document.body.classList.toggle('mc-frame', fr);

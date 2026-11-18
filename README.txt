@@ -194,3 +194,22 @@ NEW IN 0.4.1
   item frame's block model and textures in your jar) instead of the item frame's inventory picture.
 - As in the game, the item fills the middle two-thirds of the frame. Item tiles in the columns are a little bigger
   (48px instead of 44px) so the frame's pixels stay even.
+
+0.4.8
+- Full screen (button in the top bar, or F11): shows your tier list filling the whole screen.
+  * It starts on "Board": all the tiers as one list, sized so everything fits without scrolling.
+  * "Categories" in its top bar switches to one small tier list per category. "Board" switches back.
+  * It shows what you have open: in View all mode, every category; otherwise only the categories whose tabs are on
+    (with none on, every category). Only ranked items are shown, not "Not ranked yet".
+  * Esc, F11 or "Exit full screen" closes it. Hover an item to see its name. Nothing can be moved in this view.
+- All scroll bars now use Minecraft's scroll bar (taken from your jar, like the buttons).
+
+0.4.9
+- Full screen now has a plain black background (no game background behind it).
+- Checked: the item you pick as a category's tab icon is saved with your progress, and travels with share codes and
+  with Export / Restore progress. If the other person's library doesn't have that item, their tab falls back to the
+  category's first item.
+
+0.4.10
+- Full screen is now its own page: the main screen is hidden completely while it is open (before, it could show through
+  behind the full-screen view on some PCs). Closing it brings the main screen back exactly where you left it.

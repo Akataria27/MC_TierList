@@ -500,3 +500,46 @@ body.mc-frame .dock-tile .px { width: calc(var(--dtile) * 2 / 3); height: calc(v
 body.mc-frame .col .tile { --tile: 48px; }
 body.mc-frame .col .item-tile { width: 48px; height: 48px; }
 body.mc-frame .tile.sel { background-color: rgba(80, 160, 80, 0.3); }
+
+/* v0.4.8: scroll bars drawn with the game's list scroller (handle) and scroller background (track), 2x, unsmoothed.
+   12px wide = the game's 6px bar at GUI scale 2. No arrow buttons, like the game. */
+body.mc-scroll ::-webkit-scrollbar { width: 12px; height: 12px; background: transparent; }
+body.mc-scroll ::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+body.mc-scroll ::-webkit-scrollbar-corner { background: transparent; }
+body.mc-scroll ::-webkit-scrollbar-track { border: 2px solid transparent; border-image: var(--scroll-bg) 1 fill / 2px stretch; image-rendering: pixelated; }
+body.mc-scroll ::-webkit-scrollbar-thumb { min-height: 32px; min-width: 32px; border: 2px solid transparent; border-image: var(--scroll) 1 fill / 2px stretch; image-rendering: pixelated; }
+
+/* v0.4.8: full-screen view (fullview.js). Covers the window on solid black (0.4.9: no game background); read-only. */
+.fullview { position: fixed; inset: 0; z-index: 900; display: flex; flex-direction: column; background: #000; color: var(--text, #e8e8e8); }
+body.mc-bg .fullview { background: #000; }
+.fullview > * { position: relative; }
+.fv-head { display: flex; align-items: center; gap: 10px; padding: 8px 16px; background: #000; border-bottom: 2px solid #000; flex: none; }
+.fv-title { font-size: 16px; } .fv-sub { color: #a0a0a0; } .fv-sp { flex: 1; }
+.fv-body { flex: 1; min-height: 0; overflow: auto; padding: 10px 16px 16px; }
+.fv-row { display: flex; gap: 8px; background: rgba(255, 255, 255, 0.04); }
+.fv-label { flex: none; display: grid; place-items: center; font-size: 16px; text-align: center; overflow: hidden; }
+.fv-wrap { flex: 1; display: flex; flex-wrap: wrap; gap: 2px; align-content: flex-start; padding: 2px 0; }
+.fv-tile { width: var(--fv-t); height: var(--fv-t); flex: none; display: grid; place-items: center; border-radius: 6px; background: var(--panel-2, #262a31); }
+.fv-tile .px { width: 75%; height: 75%; }
+body.mc-frame .fv-tile { border-radius: 0; background: var(--frame) 0 0 / 100% 100% no-repeat; image-rendering: pixelated; }
+body.mc-frame .fv-tile .px { width: 66.667%; height: 66.667%; }
+.fv-tile:hover { outline: 2px solid #fff; outline-offset: -1px; }
+.fv-empty { padding: 40px; text-align: center; color: #a0a0a0; }
+/* Board: one merged list, tile size set by fit() in --fv */
+.fv-board { --fv-t: var(--fv, 48px); }
+.fv-board .fv-body { display: flex; flex-direction: column; gap: 4px; }
+.fv-board .fv-label { width: 56px; }
+/* Categories: one card per category, packed in columns */
+.fv-cards { --fv-t: 30px; }
+.fv-cards .fv-body { column-width: 300px; column-gap: 12px; }
+.fv-card { break-inside: avoid; margin: 0 0 12px; background: rgba(255, 255, 255, 0.04); border: 2px solid #2a2a2a; }
+.fv-card-head { display: flex; align-items: center; gap: 8px; padding: 6px 8px; background: rgba(255, 255, 255, 0.05); }
+.fv-card .fv-row { gap: 4px; border-top: 1px solid #000; background: none; }
+.fv-card .fv-label { width: 28px; }
+.fv-cat-icon { width: 24px; height: 24px; }
+
+/* 0.4.10: full screen is its own page. Everything else in the body is removed from display while it is open. */
+body.fv-open { background: #000 !important; overflow: hidden; }
+body.fv-open::before { display: none !important; }
+body.fv-open > :not(.fullview):not(#toast-root):not(.mc-tip) { display: none !important; }
+body.fv-open .fullview { position: fixed; inset: 0; z-index: 2147483000; background: #000; }

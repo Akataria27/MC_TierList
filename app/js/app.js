@@ -106,6 +106,7 @@
       h('span', { class: 'spacer' }),
       h('span', { id: 'save-status', class: 'save-status ' + saveState, title: saveError }, saveState === 'saved' ? 'Saved' : saveState === 'saving' ? 'Saving…' : 'Save failed'),
       h('button', { class: 'btn primary', title: 'Shows one random unsorted item at a time to sort with the keyboard (R)', onclick: () => A.sortCard() }, 'Random item'),
+      h('button', { class: 'btn', title: 'See the whole tier list (or the open categories) full screen (F11)', onclick: () => A.fullView() }, 'Full screen'),
       h('button', { class: 'btn', title: 'Copy a code of your progress, or load a friend’s', onclick: () => A.openShare() }, 'Share'),
       h('button', { class: 'btn small', title: 'Undo (Ctrl/Cmd+Z)', disabled: !s.undoStack.length, onclick: () => s.undo() }, 'Undo'),
       h('button', { class: 'btn small', title: 'Redo (Shift+Ctrl/Cmd+Z)', disabled: !s.redoStack.length, onclick: () => s.redo() }, 'Redo'),

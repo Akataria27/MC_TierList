@@ -252,6 +252,10 @@ function createWindow() {
       sandbox: true,
     },
   });
+  // F11 opens the app's own full-screen tier list view instead of the menu's plain window full screen.
+  win.webContents.on('before-input-event', (e, input) => {
+    if (input.type === 'keyDown' && input.key === 'F11') { e.preventDefault(); win.webContents.send('toggle-full-view'); }
+  });
   win.loadURL('app://local/index.html');
   win.on('closed', () => { win = null; });
 }

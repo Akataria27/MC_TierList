@@ -23,4 +23,5 @@ contextBridge.exposeInMainWorld('api', {
   backupNow: () => ipcRenderer.invoke('backup-now'),
   saveText: (text, name) => ipcRenderer.invoke('save-text', text, name),
   openText: () => ipcRenderer.invoke('open-text'),
+  onToggleFullView: (fn) => { ipcRenderer.removeAllListeners('toggle-full-view'); ipcRenderer.on('toggle-full-view', () => fn()); },
 });
