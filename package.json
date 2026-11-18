@@ -1,0 +1,13 @@
+{
+  "name": "mc-tierlist",
+  "version": "0.4.7",
+  "description": "Offline Minecraft item tier list with nested categories",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^37.0.0"
+  }
+}

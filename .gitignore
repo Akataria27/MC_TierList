@@ -1,0 +1,17 @@
+# Electron and other dependencies (re-downloaded by the start scripts / npm install)
+node_modules/
+
+# Everything in data/ comes from the player's own Minecraft jar or is personal progress.
+# It must never be uploaded: the app recreates the folder on first launch.
+/data/
+
+# Builds and packaged releases
+/dist/
+*.zip
+
+# OS and editor clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+*.log
